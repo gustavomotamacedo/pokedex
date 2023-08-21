@@ -1,0 +1,22 @@
+
+REQUISIÇÕES HTTP
+
+    URL: https://pokeapi.co/api/v2/pokemon
+        Endereço (path) do recurso que a gente quer usar/requisitar
+        A url é composta por {ip}/{path}, são respectivamento a identificação e o caminho para nosso recurso.
+        Na nossa url da pokeapi o {ip} é "https://pokeapi.co/", e o nosso {path} é "api/v2/pokemon".
+        O ip acima é um dominio. O DNS tem a função de, na internet, traduzir um domínio para um ip real.
+
+    TIPOS: GET, POST, PUT, DELETE
+        Esses listados acima são alguns tipos mais comuns de requisições feitas ao servidor. Cada tipo significa algo diferente para o servidor.
+
+
+    https://pokeapi.co/api/v2/pokemon/{id}
+        ÁREA DE TRANSFERENCIA DE DADOS path
+
+    https://pokeapi.co/api/v2/pokemon?type=grass
+        QUERY STRING, filtro via url
+
+    HEADERS: Configuração da requisição
+
+    A depender do método nossa requisição terá um BODY. Que é o dado que eu quero trafegar na minha requisição.
