@@ -39,11 +39,13 @@ loadMoreBtn.addEventListener('click', () => {
     const qtdRecordNextPage = offset + limit
 
     if (qtdRecordNextPage >= maxRecords) {
-        const newLimit = qtdRecordNextPage - maxRecords
+        const newLimit = maxRecords - offset
         loadMoreItensInPage(offset, newLimit)
+        loadMoreBtn.parentElement.removeChild(loadMoreBtn)
+    } else {
+        loadMoreItensInPage(offset, limit)
     }
 
-    loadMoreItensInPage(offset, limit)
 })
 
 
