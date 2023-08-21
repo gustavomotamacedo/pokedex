@@ -45,7 +45,6 @@ loadMoreBtn.addEventListener('click', () => {
     } else {
         loadMoreItensInPage(offset, limit)
     }
-
 })
 
 
