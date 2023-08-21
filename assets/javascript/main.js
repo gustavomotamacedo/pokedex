@@ -1,9 +1,5 @@
 const pokemonOl = document.querySelector(".pokemons")
 
-function convertTypesToLi(pokemonTypes) {
-    return pokemonTypes.map((typeSlot) => `<li class="type">${typeSlot.type.name}</li>`)
-}
-
 function convertPokemonToLi(pokemon) {
     return `
         <li class="pokemon">
@@ -11,9 +7,9 @@ function convertPokemonToLi(pokemon) {
             <span class="name">${pokemon.name}</span>
             <div class="detail">
                 <ol class="types">
-                    ${convertTypesToLi(pokemon.types).join('')}
+                    ${pokemon.types.map((type) => `<li class="type">${type}</li>`).join('')}
                 </ol>
-                <img src="${pokemon.sprites.other.dream_world.front_default}" alt="${pokemon.name}">
+                <img src="${pokemon.sprite}" alt="${pokemon.name}">
             </div>
         </li>
     `
