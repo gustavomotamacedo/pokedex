@@ -1,30 +1,46 @@
 const pokemonOl = document.querySelector(".pokemons")
+const loadMoreBtn = document.querySelector("#loadMorePokemons")
+let limit = 5;
+let offset = 0;
 
-function convertPokemonToLi(pokemon) {
-    return `
-        <li class="pokemon ${pokemon.type}">
-            <span class="number">#${pokemon.order}</span>
-            <span class="name">${pokemon.name}</span>
-            <div class="detail">
-                <ol class="types">
-                    ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
-                </ol>
-                <img src="${pokemon.sprite}" alt="${pokemon.name}">
-            </div>
-        </li>
-    `
+
+function loadMoreItensInPage(offset, limit) {
+    function convertPokemonToLi(pokemon) {
+        return `
+            <li class="pokemon ${pokemon.type}">
+                <span class="number">#${pokemon.order}</span>
+                <span class="name">${pokemon.name}</span>
+                <div class="detail">
+                    <ol class="types">
+                        ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
+                    </ol>
+                    <img src="${pokemon.sprite}" alt="${pokemon.name}">
+                </div>
+            </li>
+        `
+    }
+    pokeapi.getPokemons(offset, limit).then((pokemons = []) => {
+            pokemonOl.innerHTML += pokemons.map(convertPokemonToLi).join("")
+    
+    
+            // for (let i = 0; i < pokemons.length; i++) {
+            //     const pokemon = pokemons[i];
+            //     let pokemonLi = convertPokemonToLi(pokemon)
+            // }
+        })
 }
 
-pokeapi.getPokemons().then((pokemons = []) => {
+loadMoreBtn.addEventListener('click', () => {
+    offset += 5
+    limit += 5
+    loadMoreItensInPage(offset, limit)
+})
 
-        pokemonOl.innerHTML = pokemons.map(convertPokemonToLi).join("")
 
 
-        // for (let i = 0; i < pokemons.length; i++) {
-        //     const pokemon = pokemons[i];
-        //     let pokemonLi = convertPokemonToLi(pokemon)
-        // }
-    })
+
+
+
     // .catch((error) => console.log(error))
     // .finally(() => {
 
