@@ -1,7 +1,8 @@
 const pokemonOl = document.querySelector(".pokemons")
 const loadMoreBtn = document.querySelector("#loadMorePokemons")
-let limit = 5;
-let offset = 0;
+const maxRecords = 151
+const limit = 5
+let offset = 0
 
 
 function loadMoreItensInPage(offset, limit) {
@@ -34,6 +35,14 @@ loadMoreItensInPage(offset, limit)
 
 loadMoreBtn.addEventListener('click', () => {
     offset += limit
+
+    const qtdRecordNextPage = offset + limit
+
+    if (qtdRecordNextPage >= maxRecords) {
+        const newLimit = qtdRecordNextPage - maxRecords
+        loadMoreItensInPage(offset, newLimit)
+    }
+
     loadMoreItensInPage(offset, limit)
 })
 
