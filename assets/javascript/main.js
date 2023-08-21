@@ -30,9 +30,10 @@ function loadMoreItensInPage(offset, limit) {
         })
 }
 
+loadMoreItensInPage(offset, limit)
+
 loadMoreBtn.addEventListener('click', () => {
-    offset += 5
-    limit += 5
+    offset += limit
     loadMoreItensInPage(offset, limit)
 })
 
